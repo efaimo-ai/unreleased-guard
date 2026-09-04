@@ -94,12 +94,13 @@ It is also not a versioning policy. Semantic versioning tells you what number
 comes next. It says nothing about the interval during which your documentation
 is describing software that no reader possesses, which is where this lives.
 
-## Related
+<!-- generated:siblings -->
 
-- `claim-sweep` is the second half of step 6: once the publish collapses the
-  gap, every artifact that asserted the old version has to be found, including
-  the checks that just went vacuously green.
-- `red-before-green` is why step 5 says a check rather than a convention, and
-  why that check has to be watched failing before it is trusted.
-- [efaimo](https://github.com/efaimo-ai/efaimo) audits the quality and context
-  cost of MCP servers and Agent Skills, including this one.
+## Siblings
+
+Every skill in this set is about a report that was true about the wrong thing. The set: https://efaimo.ai/skills
+
+- `claim-sweep` - the second half of step 6: publishing collapses the gap and every artifact quoting the old version has to be found.
+- `red-before-green` - step 5 asks for a check rather than a convention, and that check has to be watched failing first.
+
+<!-- /generated:siblings -->
