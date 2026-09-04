@@ -1,8 +1,8 @@
 # Working the gap: what each step looks like in a real repository
 
 The rules in `SKILL.md` are short because they were expensive. This is the
-mechanism behind each one, from a CLI that has been through four releases with
-the gap open every time.
+mechanism behind each one, from a CLI that has opened this gap on every release
+it has ever cut, and closed it only by publishing.
 
 ## Why "bump immediately" is not pedantry
 
