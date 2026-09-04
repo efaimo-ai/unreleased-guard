@@ -60,6 +60,10 @@ by itself.
    gap collapses on publish, which means every capture, badge, and number that
    was correct yesterday is now describing the wrong release.
 
+What each of those six steps looks like in a real repository, including the ones
+that were learned by getting them wrong, is in
+[references/the-gap.md](references/the-gap.md).
+
 ## The trap inside the trap: regenerated output
 
 If your docs quote real command output, and you regenerate that output from the
