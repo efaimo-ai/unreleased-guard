@@ -1,5 +1,9 @@
 # unreleased-guard
 
+[![license](https://img.shields.io/badge/license-Apache--2.0-0b7285)](LICENSE)
+[![grade](https://img.shields.io/badge/efaimo%20check--skill-A%20(100)-0b7285)](https://efaimo.ai/skills)
+[![house-style](https://github.com/efaimo-ai/unreleased-guard/actions/workflows/house-style.yml/badge.svg)](https://github.com/efaimo-ai/unreleased-guard/actions/workflows/house-style.yml)
+
 An Agent Skill. **Public copy describes what a reader can actually get, not what
 your working tree can do.** This is the discipline for the interval in between,
 which opens by itself the moment a feature merges and closes only when you
@@ -11,6 +15,25 @@ Skill: unreleased-guard
 
 Drop the directory into your skills path. Nothing to install, no dependencies:
 `SKILL.md` plus one reference file.
+
+## The gap, which opens by itself
+
+```mermaid
+flowchart LR
+    M["working tree<br/><b>main</b><br/><i>has the new flag</i>"]
+    P["last published release<br/><b>what a reader installs</b><br/><i>does not</i>"]
+    M -->|"copy is generated from here<br/>because it is convenient"| C["README, changelog,<br/>landing page,<br/>captured output"]
+    C -->|"promises behaviour<br/>nobody can run"| R(["the reader"])
+    P -->|"is what the reader<br/>actually gets"| R
+    classDef pass fill:#0b728522,stroke:#0b7285;
+    classDef fail fill:#c9282822,stroke:#c92828;
+    class P pass;
+    class M,C fail;
+```
+
+The gap opens the moment a feature merges and closes only on publish. Every
+document written inside it is wrong on arrival, and no gate notices, because the
+working tree agrees with itself.
 
 ## The problem
 
@@ -56,10 +79,26 @@ three moments where only one works.
 
 Apache-2.0. See `LICENSE` and `NOTICE`.
 
-Part of [efaimo ai](https://efaimo.ai). Its sibling skills are
-[claim-sweep](https://github.com/efaimo-ai/claim-sweep),
-[red-before-green](https://github.com/efaimo-ai/red-before-green),
-[honest-chart](https://github.com/efaimo-ai/honest-chart) and
-[read-back](https://github.com/efaimo-ai/read-back);
-[efaimo](https://github.com/efaimo-ai/efaimo) is the CLI that audits the quality
-and context cost of MCP servers and Agent Skills, including this one.
+
+## The set
+
+Seven skills, each one a discipline that cost something to learn.
+
+| skill | the question it asks |
+|---|---|
+| [`red-before-green`](https://github.com/efaimo-ai/red-before-green) | can this check fail at all? |
+| [`denominator`](https://github.com/efaimo-ai/denominator) | how much of the world can it see? |
+| [`read-back`](https://github.com/efaimo-ai/read-back) | did the write actually apply? |
+| [`claim-sweep`](https://github.com/efaimo-ai/claim-sweep) | what else still asserts the old value? |
+| **`unreleased-guard`** (this one) | does the copy describe what shipped? |
+| [`honest-chart`](https://github.com/efaimo-ai/honest-chart) | is the picture proportional to the data? |
+| [`mcp-stateless-migration`](https://github.com/efaimo-ai/mcp-stateless-migration) | does this server match the 2026-07-28 spec? |
+
+All of them are audited by [`efaimo`](https://github.com/efaimo-ai/efaimo), the
+CLI that measures the quality and context-window cost of MCP servers and Agent
+Skills. The index of every public skill it can find, graded, is at
+[efaimo.ai/skills](https://efaimo.ai/skills).
+
+## License
+
+Apache-2.0. See [`LICENSE`](LICENSE) and [`NOTICE`](NOTICE).
