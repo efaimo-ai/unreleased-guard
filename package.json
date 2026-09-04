@@ -1,0 +1,44 @@
+{
+  "name": "unreleased-guard",
+  "version": "0.1.0",
+  "description": "whenever public-facing copy is written or changed while the working tree is ahead of what users can actually get - a README, docs site, changelog, landing page, help text, example, or...",
+  "type": "module",
+  "license": "Apache-2.0",
+  "author": "efaimo ai (https://efaimo.ai)",
+  "homepage": "https://efaimo.ai/skills",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/efaimo-ai/unreleased-guard.git"
+  },
+  "bugs": {
+    "url": "https://github.com/efaimo-ai/unreleased-guard/issues"
+  },
+  "keywords": [
+    "agent-skill",
+    "agent-skills",
+    "claude",
+    "claude-code",
+    "ai-agents",
+    "mcp"
+  ],
+  "bin": {
+    "unreleased-guard": "bin/install.mjs"
+  },
+  "files": [
+    "SKILL.md",
+    "references",
+    "bin",
+    "NOTICE"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "node --test",
+    "house-style": "node scripts/check-house-style.mjs"
+  },
+  "publishConfig": {
+    "provenance": true,
+    "access": "public"
+  }
+}

@@ -1,5 +1,6 @@
 # unreleased-guard
 
+[![npm](https://img.shields.io/npm/v/unreleased-guard?color=0b7285&label=npm)](https://www.npmjs.com/package/unreleased-guard)
 [![license](https://img.shields.io/badge/license-Apache--2.0-0b7285)](LICENSE)
 [![grade](https://img.shields.io/badge/efaimo%20check--skill-A%20(100)-0b7285)](https://efaimo.ai/skills)
 [![house-style](https://github.com/efaimo-ai/unreleased-guard/actions/workflows/house-style.yml/badge.svg)](https://github.com/efaimo-ai/unreleased-guard/actions/workflows/house-style.yml)
@@ -15,6 +16,27 @@ Skill: unreleased-guard
 
 Drop the directory into your skills path. Nothing to install, no dependencies:
 `SKILL.md` plus one reference file.
+
+<!-- generated:install -->
+
+## Install
+
+```sh
+npx unreleased-guard                 # into ./.claude/skills/unreleased-guard/
+npx unreleased-guard --global        # into ~/.claude/skills/unreleased-guard/
+npx unreleased-guard --check         # installed, and current?
+```
+
+The package is the skill: `SKILL.md` and its `references/`, nothing else. The
+installer copies them, reads every byte back, and fails if what landed is not
+what it wrote. It refuses to overwrite a directory whose contents differ unless
+you pass `--force`, and installing the same version twice is a success rather
+than a conflict.
+
+Or take it by hand. It is markdown; `npx unreleased-guard --print` writes `SKILL.md` to
+stdout, and the repository is the whole thing.
+
+<!-- /generated:install -->
 
 ## The gap, which opens by itself
 
@@ -79,6 +101,34 @@ three moments where only one works.
 
 Apache-2.0. See `LICENSE` and `NOTICE`.
 
+
+<!-- generated:pipeline -->
+
+## What installing it does to a session
+
+A skill is not free just because it is markdown. Its frontmatter is loaded at
+the start of every session for every skill you have installed, whether or not it
+ever fires.
+
+```mermaid
+flowchart LR
+    N["npx unreleased-guard"] --> D[/".claude/skills/unreleased-guard/"/]
+    D --> M["frontmatter<br/><b>every session, always</b>"]
+    D --> B["SKILL.md body<br/><i>only when it triggers</i>"]
+    D --> R["references/<br/><i>only if the agent reads them</i>"]
+    M --> S(["your context window"])
+    B -.->|"on trigger"| S
+    R -.->|"on demand"| S
+    classDef always fill:#c9282822,stroke:#c92828,stroke-width:1px;
+    classDef lazy fill:#0b728522,stroke:#0b7285,stroke-width:1px;
+    class M always;
+    class B,R lazy;
+```
+
+In this skill's case, measured by [efaimo](https://github.com/efaimo-ai/efaimo) `weigh` (v0.5.0, 2026-09-04):
+**96 tokens always resident**, 1,125 when it triggers, and no reference files at all.
+
+<!-- /generated:pipeline -->
 
 ## The set
 
