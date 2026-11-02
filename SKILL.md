@@ -4,7 +4,7 @@ description: Use whenever public-facing copy is written or changed while the wor
 license: Apache-2.0
 metadata:
   version: "0.1.0"
-  homepage: "https://efaimo.ai"
+  homepage: "https://efaimo.com"
   verified_against: "2026-09-03"
 ---
 
@@ -102,7 +102,7 @@ is describing software that no reader possesses, which is where this lives.
 
 ## Siblings
 
-Every skill in this set is about a report that was true about the wrong thing. The set: https://efaimo.ai/skills
+Every skill in this set is about a report that was true about the wrong thing. The set: https://efaimo.com/skills
 
 - `claim-sweep` - the second half of step 6: publishing collapses the gap and every artifact quoting the old version has to be found.
 - `red-before-green` - step 5 asks for a check rather than a convention, and that check has to be watched failing first.
