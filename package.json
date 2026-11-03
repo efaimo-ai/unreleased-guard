@@ -1,7 +1,7 @@
 {
   "name": "unreleased-guard",
   "version": "0.1.0",
-  "description": "whenever public-facing copy is written or changed while the working tree is ahead of what users can actually get - a README, docs site, changelog, landing page, help text, example, or...",
+  "description": "Use whenever public-facing copy is written or changed while the working tree is ahead of what users can actually get.",
   "type": "module",
   "license": "Apache-2.0",
   "author": "efaimo ai (https://efaimo.ai)",
