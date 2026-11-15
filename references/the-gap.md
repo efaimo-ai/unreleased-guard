@@ -30,14 +30,15 @@ to hit it before they hit the flag. An entry in a tracking issue, a note in the
 changelog, or a section at the bottom all fail that test, because the reader
 who is about to make the mistake is not reading those.
 
-## Why the commit before the tag
+## Why before the tag, and as late as possible
 
-Three candidate moments, and only one works.
+Three candidate moments. The rule is the same for the first two: the tagged
+tree must already be clean.
 
 | when the annotations come off | what the registry renders |
 |---|---|
 | commit before the tag | clean copy, no annotations, describing the release |
-| the tag commit itself | usually fine, but any tooling that tags an existing commit publishes the annotated tree |
+| the tag commit itself | fine when the strip and the tag land on the same commit; tooling that tags an earlier commit publishes the annotated tree |
 | after the tag | the annotations ship, verbatim, on the package page |
 
 The failure mode of "after" is silent for the author, since their tree looks

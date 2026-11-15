@@ -1,6 +1,6 @@
 ---
 name: unreleased-guard
-description: Use whenever public-facing copy is written or changed while the working tree is ahead of what users can actually get - a README, docs site, changelog, landing page, help text, example, or captured command output - and before cutting a release or publishing to a registry. The repository is the convenient source of truth and the wrong one; readers install the last published version, so copy generated from the working tree promises flags and behaviour that nobody can run.
+description: Use when writing or editing public docs for software whose repository is ahead of its latest published release, and when preparing a tag or a registry publish - a README, docs site, changelog entry, help text, example or captured command output. Readers install the published version, so docs written from the working tree describe flags they cannot run. Covers measuring the gap, inline "unreleased" notes and when to remove them, freezing captured output until the publish, and a check that ties docs to the released version.
 license: Apache-2.0
 metadata:
   version: "0.1.0"
@@ -30,17 +30,26 @@ is serving, what the docs URL renders. Not what your branch does.
 Everything below exists to keep that one sentence true across a gap that opens
 by itself.
 
+## Find the gap first
+
+    git describe --tags --abbrev=0                                 # last tag
+    git log --oneline "$(git describe --tags --abbrev=0)"..HEAD    # unreleased commits
+    npm view <pkg> version                                         # what npm serves
+    pip index versions <pkg>                                       # what PyPI serves
+    gh release view --json tagName,publishedAt                     # latest GitHub release
+
+If the registry, the last tag and the manifest agree and nothing follows the
+tag, there is no gap and nothing here applies. If you cannot run these (no
+shell), ask which version is published before writing the copy.
+
 ## The move
 
 1. **Make sure no two builds carry the same version.** If the last tag is 0.1.0
    and something merges, bump the tree to 0.1.1 immediately; otherwise two
    different pieces of software both call themselves 0.1.0 and no output can be
-   traced to either one. If your release tooling computes the version at release
-   time, as release-please and changesets do, the tree cannot carry the next
-   number and bumping is the wrong instruction. The requirement is the same
-   underneath: make development builds self-identify, with a `-dev` suffix or a
-   commit stamp, so that no artifact is ambiguous about which side of the gap it
-   came from.
+   traced to either one. Where release tooling picks the number at release time
+   (release-please, changesets), make development builds self-identify instead,
+   with a `-dev` suffix or a commit stamp.
 2. **Annotate every line of copy that describes unreleased behaviour, inline,
    where it sits.** Not in a tracking issue and not in a list at the bottom.
    The annotation has to be in the reader's eye at the moment they would
@@ -48,11 +57,11 @@ by itself.
 3. **State the gap once, at the top of whatever a fresh contributor reads
    first.** This is the single fact that most often makes a newcomer write
    something false, and they cannot infer it from the code.
-4. **Strip the annotations in the commit BEFORE the tag.** Not in the tag
-   commit. Registries and release pages render the tagged tree, so an
-   annotation still present at the tag is published verbatim, and one removed
-   after the tag never reaches the artifact at all. There is exactly one commit
-   where it is right.
+4. **Strip the annotations before the tag, as late as possible.** Registries
+   and release pages render the tagged tree: an annotation still there at the
+   tag ships verbatim, and one removed after the tag never reaches the
+   artifact. Do it in the commit right before the tag, or in the tag commit
+   itself if your tooling tags that exact commit.
 5. **Tie the claim to the released version with a check.** Something that reads
    the published version from one place and fails when public copy disagrees.
    Prose discipline decays across sessions; a check does not.
@@ -88,15 +97,10 @@ regenerate will read it, and lifted only when the publish lands.
 - The changelog has an unreleased section and the README does not distinguish
   it.
 
-## What this is not
+## Scope
 
-This is not a rule against documenting work in progress. Write as much as you
-like; the annotation is what makes it safe, and step 4 is what makes the
-annotation disappear at exactly the right moment.
-
-It is also not a versioning policy. Semantic versioning tells you what number
-comes next. It says nothing about the interval during which your documentation
-is describing software that no reader possesses, which is where this lives.
+Document work in progress as much as you like. The inline annotation is what
+makes it safe, and step 4 is what takes it off at the right moment.
 
 <!-- generated:siblings -->
 

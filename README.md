@@ -98,8 +98,9 @@ documenting what is in front of you.
 2. Annotate unreleased behaviour inline, where the line sits, so a reader
    skimming for something to copy hits the annotation first.
 3. State the gap once, at the top of whatever a new contributor reads first.
-4. Strip the annotations in the commit **before** the tag. Registries render the
-   tagged tree, so there is exactly one commit where this is right.
+4. Strip the annotations **before** the tag, as late as possible: the commit
+   right before it, or the tag commit itself when your tooling tags that exact
+   commit. Registries render the tagged tree.
 5. Tie the claim to the released version with a check, not a convention.
 6. After publishing, re-measure everything that quoted the old version.
 
@@ -115,9 +116,13 @@ for an unrelated reason by someone not thinking about the gap.
 ## Provenance
 
 Every step here is from a CLI that has been through four releases with this gap
-open each time, including the one that produced the rule about the commit before
+open each time, including the one that produced the rule about stripping before
 the tag. `references/the-gap.md` has the mechanism, the check, and the table of
-three moments where only one works.
+the three moments the annotations can come off.
+
+The skill starts by measuring the gap (last tag, unreleased commits, what the
+registry serves) and asks which version is published when it has no shell to
+look.
 
 ## License
 

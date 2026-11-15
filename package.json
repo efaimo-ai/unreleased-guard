@@ -1,7 +1,7 @@
 {
   "name": "unreleased-guard",
   "version": "0.1.0",
-  "description": "Use whenever public-facing copy is written or changed while the working tree is ahead of what users can actually get.",
+  "description": "Use when writing or editing public docs for software whose repository is ahead of its latest published release, and when preparing a tag or a registry publish.",
   "type": "module",
   "license": "Apache-2.0",
   "author": "efaimo ai (https://efaimo.ai)",

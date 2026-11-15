@@ -30,10 +30,23 @@ All notable changes to unreleased-guard are documented here. Format follows
   run that packs the package the way npm would, installs it from that tarball,
   and installs the skill from there.
 
+### Changed
+
+- New "Find the gap first": the commands that show the last tag, the commits
+  since, and what npm, PyPI and GitHub Releases serve, and asking which version
+  is published when there is no shell.
+- One rule on when annotations come off, in `SKILL.md` and
+  `references/the-gap.md` alike: before the tag, as late as possible, which is
+  the commit right before it or the tag commit itself when the tooling tags
+  that exact commit. The two used to disagree about the tag commit.
+- The description names public docs for software ahead of its release, and
+  tag or publish preparation, instead of any changelog edit.
+- "What this is not" is down to the one sentence that changes what an agent
+  does.
+
 ### Notes
 
-- The skill's own content did not change for this release. It grades A(100) on
-  `efaimo check --skill` before and after, and the package version and the
-  version in `SKILL.md` frontmatter are one number, pinned by a test.
+- The package version and the version in `SKILL.md` frontmatter are one number,
+  pinned by a test.
 
 [Unreleased]: https://github.com/efaimo-ai/unreleased-guard/commits/main
