@@ -62,8 +62,17 @@ stdout, and the repository is the whole thing.
 
 ## The gap, which opens by itself
 
-```mermaid
-flowchart LR
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/efaimo-ai/unreleased-guard/main/assets/diagram-6f6c0e6bf3-dark.png">
+  <img alt="Copy generated from the working tree on main, which has the new flag, promises the reader behaviour nobody can run, because the reader gets the last published release, which does not have it." src="https://raw.githubusercontent.com/efaimo-ai/unreleased-guard/main/assets/diagram-6f6c0e6bf3-light.png" width="533">
+</picture>
+
+<details>
+<summary>Mermaid source</summary>
+
+```text
+flowchart TD
+    accDescr: Copy generated from the working tree on main, which has the new flag, promises the reader behaviour nobody can run, because the reader gets the last published release, which does not have it.
     M["working tree<br/><b>main</b><br/><i>has the new flag</i>"]
     P["last published release<br/><b>what a reader installs</b><br/><i>does not</i>"]
     M -->|"copy is generated from here<br/>because it is convenient"| C["README, changelog,<br/>landing page,<br/>captured output"]
@@ -74,6 +83,8 @@ flowchart LR
     class P pass;
     class M,C fail;
 ```
+
+</details>
 
 The gap opens the moment a feature merges and closes only on publish. Every
 document written inside it is wrong on arrival, and no gate notices, because the
@@ -137,8 +148,17 @@ A skill is not free just because it is markdown. Its frontmatter is loaded at
 the start of every session for every skill you have installed, whether or not it
 ever fires.
 
-```mermaid
-flowchart LR
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/efaimo-ai/unreleased-guard/main/assets/diagram-2f2324103d-dark.png">
+  <img alt="Installing puts SKILL.md and references/ in .claude/skills/unreleased-guard/. The frontmatter enters your context window in every session, the body only when the skill triggers, and the references only if the agent reads them." src="https://raw.githubusercontent.com/efaimo-ai/unreleased-guard/main/assets/diagram-2f2324103d-light.png" width="756">
+</picture>
+
+<details>
+<summary>Mermaid source</summary>
+
+```text
+flowchart TD
+    accDescr: Installing puts SKILL.md and references/ in .claude/skills/unreleased-guard/. The frontmatter enters your context window in every session, the body only when the skill triggers, and the references only if the agent reads them.
     N["npx -y --allow-git=all github:efaimo-ai/unreleased-guard"] --> D[/".claude/skills/unreleased-guard/"/]
     D --> M["frontmatter<br/><b>every session, always</b>"]
     D --> B["SKILL.md body<br/><i>only when it triggers</i>"]
@@ -151,6 +171,8 @@ flowchart LR
     class M always;
     class B,R lazy;
 ```
+
+</details>
 
 In this skill's case, measured by [efaimo](https://github.com/efaimo-ai/efaimo) `weigh` (v0.6.0, 2026-11-02):
 **96 tokens always resident**, 1,143 when it triggers, 997 across 1 reference file if the agent reads to the end.
@@ -174,8 +196,17 @@ Every skill in this set is about a report that was true about the wrong thing.
 | [`mcp-stateless-migration`](https://github.com/efaimo-ai/mcp-stateless-migration) | a server said ok | which revision it speaks |
 | [`efaimo`](https://github.com/efaimo-ai/efaimo) | a tool said A(100) | what a grade certifies, and what it costs |
 
-```mermaid
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/efaimo-ai/unreleased-guard/main/assets/diagram-9f9ac0d509-dark.png">
+  <img alt="Every skill in the set and the efaimo CLI, with an edge for each handoff between two of them. unreleased-guard is highlighted." src="https://raw.githubusercontent.com/efaimo-ai/unreleased-guard/main/assets/diagram-9f9ac0d509-light.png" width="758">
+</picture>
+
+<details>
+<summary>Mermaid source</summary>
+
+```text
 graph TD
+    accDescr: Every skill in the set and the efaimo CLI, with an edge for each handoff between two of them. unreleased-guard is highlighted.
     red_before_green["red-before-green"]
     denominator["denominator"]
     read_it_back["read-it-back"]
@@ -200,6 +231,8 @@ graph TD
     classDef self fill:#0b728533,stroke:#0b7285,stroke-width:2px;
     class unreleased_guard self;
 ```
+
+</details>
 
 Each edge is a real handoff, not a category: the reason one skill points at
 another is written into it at [efaimo.com/skills](https://efaimo.com/skills), and
